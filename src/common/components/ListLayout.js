@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react'
 import {Link} from 'react-router';
 
-export class IndexLayout extends Component {
+export class ListLayout extends Component {
   render() {
     return (
       <header>
@@ -19,7 +19,7 @@ export class IndexLayout extends Component {
           {this.props.children}
         </section>
         <article>
-          Index layout
+          List Layout
         </article>
       </header>
     )

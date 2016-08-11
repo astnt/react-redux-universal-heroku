@@ -6,7 +6,7 @@ var publicPath = "/static/";
 
 var commonLoaders = [
   {
-    test: /\.js$|\.jsx$/,
+    test: /\.js$/,
     loader: 'babel-loader',
     query: {
       "presets": ["es2015", "react", "stage-0"],
@@ -28,7 +28,7 @@ module.exports = [
     devtool: "source-map",
     context: path.join(__dirname, "."),
     entry: [
-      '../src/client/index.js'
+      './src/client/index.js'
     ],
     output: {
       path: assetsPath,
@@ -53,7 +53,7 @@ module.exports = [
     name: "nodejs",
     context: path.join(__dirname, "."),
     entry: {
-      server: "../src/server/server.js"
+      server: "./src/server/server.js"
     },
     target: "node",
     output: {
@@ -72,6 +72,8 @@ module.exports = [
     plugins: [
       new webpack.optimize.OccurenceOrderPlugin(),
       new webpack.DefinePlugin({
+        __DEVCLIENT__: false,
+        __DEVSERVER__: false,
         'process.env.NODE_ENV': '"production"',
         'process.env.BROWSER': 'false',
       })
