@@ -1,9 +1,6 @@
 var path = require("path");
 var webpack = require("webpack");
 
-var assetsPath = path.join(__dirname, ".");
-var publicPath = "/static/";
-
 var commonLoaders = [
   {
     test: /\.js$/,
@@ -26,14 +23,13 @@ module.exports = [
   {
     name: "browser",
     devtool: "source-map",
-    context: path.join(__dirname, "."),
+    context: __dirname,
     entry: [
       './src/client/index.js'
     ],
     output: {
-      path: assetsPath,
+      path: __dirname,
       filename: "./public/static/bundle.js",
-      publicPath: publicPath
     },
     module: {
       loaders: commonLoaders
@@ -51,16 +47,14 @@ module.exports = [
   },
   {
     name: "nodejs",
-    context: path.join(__dirname, "."),
+    context: __dirname,
     entry: {
       server: "./src/server/server.js"
     },
     target: "node",
     output: {
-      path: assetsPath,
+      path: __dirname,
       filename: "./build/server.js",
-      publicPath: publicPath,
-      libraryTarget: "commonjs2"
     },
     module: {
       loaders: commonLoaders
@@ -72,8 +66,6 @@ module.exports = [
     plugins: [
       new webpack.optimize.OccurenceOrderPlugin(),
       new webpack.DefinePlugin({
-        __DEVCLIENT__: false,
-        __DEVSERVER__: false,
         'process.env.NODE_ENV': '"production"',
         'process.env.BROWSER': 'false',
       })
