@@ -1,6 +1,10 @@
 {
   "name": "universal-react-boilerplate",
   "description": "Draft react boilerplate",
+  "engines": {
+    "node": "5.9.1",
+    "npm": "3.7.3"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/astnt/react-redux-universal"
@@ -8,6 +12,7 @@
   "license": "MIT",
   "version": "0.0.1",
   "scripts": {
+    "prestart": "npm run build",
     "start": "node build/server.js",
     "development": "node src/server/development.js",
     "build": "webpack -p --colors  --profile --config webpack.production.config.js"
