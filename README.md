@@ -40,3 +40,7 @@ export class List extends Component {
 This template is ready to deploy and run on Heroku.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/astnt/react-redux-universal-heroku)
+
+## Demo
+
+Demo app available at https://react-redux-universal-heroku.herokuapp.com/
