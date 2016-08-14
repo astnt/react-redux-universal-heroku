@@ -1,12 +1,15 @@
 import React from 'react';
 import {Router, Route} from 'react-router/umd/ReactRouter';
 
-import {IndexLayout} from "./components/IndexLayout";
-import {ListLayout} from "./components/ListLayout";
+import {Layout} from "./components/Layout";
+import {Index} from "./components/Index";
+import {List} from "./components/List";
 
 export default (
   <Router>
-    <Route path="/" component={IndexLayout}/>
-    <Route path="/list" component={ListLayout}/>
+    <Route component={Layout}>
+      <Route path="/" component={Index}/>
+      <Route path="/list" component={List}/>
+    </Route>
   </Router>
 );
