@@ -11,7 +11,6 @@ import {Provider} from 'react-redux'
 
 import {match, RouterContext} from 'react-router';
 
-import webpackConfig from '../../webpack.development.config'
 import routes from "../common/routes";
 
 import configureStore from "../common/store/configureStore";
@@ -21,6 +20,7 @@ import {PORT} from "../common/constants";
 const app = new Express();
 
 if (process.env.NODE_ENV === 'development') {
+  const webpackConfig = require('../../webpack.development.config');
   const compiler = webpack(webpackConfig);
 
   app.use(webpackDevMiddleware(compiler, {
