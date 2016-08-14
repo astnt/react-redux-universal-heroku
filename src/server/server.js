@@ -35,6 +35,15 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use(BodyParser.json());
 
+app.use('/api/list', (req, res, next) => {
+  res.header("Content-Type", "application/json");
+  res.send(JSON.stringify([
+    {id: 1, text: 'List Item'},
+    {id: 2, text: 'Another List Item'},
+    {id: 3, text: 'Yet Another List Item'},
+  ]));
+});
+
 app.use(function (req, res) {
   match({routes, location: req.url}, (error, redirectLocation, renderProps) => {
     if (error) {

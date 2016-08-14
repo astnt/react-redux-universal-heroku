@@ -19,7 +19,7 @@ export class IndexLayout extends Component {
           {this.props.children}
         </section>
         <article>
-          Index layout
+          Index Layout
         </article>
       </header>
     )
