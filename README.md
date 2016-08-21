@@ -1,5 +1,10 @@
 # React Redux Universal Boilerplate
 
+[![build status](https://img.shields.io/travis/astnt/react-redux-universal-heroku/master.svg?style=flat-square)](https://travis-ci.org/astnt/react-redux-universal-heroku)
+[![Dependency Status](https://david-dm.org/astnt/react-redux-universal-heroku.svg?style=flat-square)](https://david-dm.org/astnt/react-redux-universal-heroku)
+[![devDependency Status](https://david-dm.org/astnt/react-redux-universal-heroku/dev-status.svg?style=flat-square)](https://david-dm.org/astnt/react-redux-universal-heroku#info=devDependencies)
+[![Demo on Heroku](https://img.shields.io/badge/demo-heroku-brightgreen.svg?style=flat-square)](https://react-redux-universal-heroku.herokuapp.com/)
+
 Simple boilerplate with server-side rendering.
 
 ## Initial state for async
@@ -10,7 +15,7 @@ Define static method `fetchInitialComponentData` in component:
 export class List extends Component {
 
   static fetchInitialComponentData(params) {
-    return fetchListIfNeeded(params); // Should to return promise from here
+    return fetchListIfNeeded(params); // Should return promise from here
   }
   
 }
@@ -22,7 +27,7 @@ Then use this component in route tree:
 <Route path="/list" component={List}/>
 ```
 
-And don't forget to fetch same data at client side:
+And don't forget to fetch same data if component mounted at client side:
 
 ```js
 export class List extends Component {
@@ -43,4 +48,4 @@ This template is ready to deploy and run on Heroku.
 
 ## Demo
 
-Demo app available at https://react-redux-universal-heroku.herokuapp.com/
+Demo available at https://react-redux-universal-heroku.herokuapp.com/
