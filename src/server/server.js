@@ -1,8 +1,5 @@
 import Express from 'express'
 import BodyParser from 'body-parser'
-import webpack from 'webpack'
-import webpackDevMiddleware from 'webpack-dev-middleware'
-import webpackHotMiddleware from 'webpack-hot-middleware'
 
 import React from 'react';
 import {renderToString, renderToStaticMarkup} from 'react-dom/server';
@@ -20,7 +17,11 @@ import {PORT} from "../common/constants";
 const app = new Express();
 
 if (process.env.NODE_ENV === 'development') {
+  const webpack = require('webpack');
   const webpackConfig = require('../../webpack.development.config');
+  const webpackDevMiddleware = require('webpack-dev-middleware');
+  const webpackHotMiddleware = require('webpack-hot-middleware');
+
   const compiler = webpack(webpackConfig);
 
   app.use(webpackDevMiddleware(compiler, {
