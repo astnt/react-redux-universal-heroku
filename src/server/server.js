@@ -19,6 +19,7 @@ import {PORT} from "../common/constants";
 
 const app = new Express();
 
+console.log('process.env.NODE_ENV', process.env.NODE_ENV);
 if (process.env.NODE_ENV === 'development') {
   const webpackConfig = require('../../webpack.development.config');
   const compiler = webpack(webpackConfig);
