@@ -10,6 +10,7 @@ import {syncHistoryWithStore} from 'react-router-redux'
 
 import routes from '../common/routes'
 import configureStore from '../common/store/configureStore'
+import {authStateChanged} from "../common/actions/authorization";
 
 const store = configureStore(window.__INITIAL_STATE__);
 const history = syncHistoryWithStore(browserHistory, store);
@@ -36,3 +37,9 @@ render(
   ,
   document.getElementById('app')
 );
+
+setTimeout(() => {
+  firebase.auth().onAuthStateChanged(function(user) {
+    store.dispatch(authStateChanged(user))
+  });
+});

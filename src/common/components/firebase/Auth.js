@@ -1,25 +1,31 @@
 import React, {Component, PropTypes} from 'react'
 import firebase from 'firebase'
+import {connect} from 'react-redux'
 
 import config from './firebaseConfig'
+import {authWithGoogle} from "../../actions/authorization";
+import {authRedirectResult} from "../../actions/authorization";
 
 const app = firebase.initializeApp(config);
 
 console.log('process.env.BROWSER', process.env.BROWSER);
-let provider;
-if (process.env.BROWSER) {
-  provider = new firebase.auth.GoogleAuthProvider();
-}
 
+@connect(state => {
+  return {
+    authorization: state.authorization
+  }
+})
 export class Auth extends Component {
 
   loginWithGoogle = () => {
-    firebase.auth().signInWithPopup(provider).then(function (result) {
-      console.log('result', result);
-    }).catch(function (error) {
-      console.log('error', error);
-    });
+    const {dispatch} = this.props;
+    dispatch(authWithGoogle())
   };
+
+  componentDidMount() {
+    const {dispatch} = this.props;
+    dispatch(authRedirectResult())
+  }
 
   render() {
     return (
