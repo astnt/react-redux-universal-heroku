@@ -6,9 +6,9 @@ if (process.env.BROWSER) {
 }
 
 export async function authorizeWithGoogleApi() {
-  return await firebase.auth().signInWithRedirect(provider);
+  await firebase.auth().signInWithRedirect(provider);
 }
 
 export async function authorizeRedirectResultApi() {
-  return await firebase.auth().getRedirectResult();
+  await firebase.auth().getRedirectResult();
 }
